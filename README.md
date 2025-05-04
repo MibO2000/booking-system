@@ -16,7 +16,10 @@
 
 ## Database
 
-`./db_info/` 
-- This directory includes class diagram used in this project.
+![ClassDiagram](./db_info/ClassDiagram.png)
+- This is the class diagram used in this project.
+
+![DetailedClassDiagram](./db_info/DetailedClassDiagram.png)
+- This is the detailed class diagram used in this project.
 
 
