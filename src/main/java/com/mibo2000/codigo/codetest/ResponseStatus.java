@@ -1,0 +1,5 @@
+package com.mibo2000.codigo.codetest;
+
+public enum ResponseStatus {
+    SUCCESS, ERROR, FAIL, INVALID, NOT_FOUND, UN_AUTHORIZE, UNKNOWN, EXPIRE, ACCOUNT_EXIST, UNAUTHORIZED, BAD_REQUEST
+}

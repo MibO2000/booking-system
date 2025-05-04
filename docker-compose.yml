@@ -1,0 +1,54 @@
+name: codetest
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codetest-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/test
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+      SPRING_REDIS_PASSWORD: password
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - codetest-net
+
+  mysql:
+    image: mysql:8.0
+    container_name: codetest-mysql
+    ports:
+      - "13306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: test
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - codetest-net
+
+  redis:
+    image: redis:7.2
+    container_name: codetest-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass password
+    volumes:
+      - redis_data:/data
+    networks:
+      - codetest-net
+
+volumes:
+  mysql_data:
+  redis_data:
+
+networks:
+  codetest-net:
