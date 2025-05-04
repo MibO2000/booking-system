@@ -16,7 +16,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "class_user")
+@Table(name = "user_table")
 public class UserEntity extends AbstractEntity implements UserDetails {
     @Id
     @Column(name = "user_id", nullable = false, unique = true)
